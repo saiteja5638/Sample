@@ -22,10 +22,27 @@ app.get('/',async (req,res)=>{
     res.send(a)
 })
 
+app.get('/GetData',async (req,res)=>{
+    let a = await getReq1()
+
+    res.send(a)
+})
 async function getReq()
 {
     try {
         let response = await axios.get('https://3a9c9c86trial-dev-sbp-hire-srv.cfapps.us10-001.hana.ondemand.com/catalog/GIT_REPO')
+
+        return response.data.value
+
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+async function getReq1()
+{
+    try {
+        let response = await axios.get('https://e5e33c00trial-e5e33c00trial-dev-demo-app-srv.cfapps.us10-001.hana.ondemand.com/catalog/PLANTS')
 
         return response.data.value
 
